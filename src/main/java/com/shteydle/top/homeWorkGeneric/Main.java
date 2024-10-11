@@ -31,22 +31,6 @@ public class Main {
         arr.insert(3, "Str1");*/
 
         //arr.removeAt(3);
-        MyArrayList<String> arr2 = new MyArrayList<>(2);
-        arr2.pushBack("Str1");
-        arr2.pushBack("Str2");
-        arr2.pushBack("Str3");
-        arr2.pushBack("Str1");
-        arr2.pushBack("Str1");
-        arr2.pushBack("Str4");
-        arr2.pushBack("Str8");
-
-        arr2.pushBack("Str1");
-        arr2.pushBack("Str1");
-
-        arr2.pushBack("Str23");
-        arr2.pushBack("Str1");
-        arr2.pushBack("Str1");
-
 
         //arr.popFront();
 
@@ -86,7 +70,6 @@ public class Main {
 
         arr.shuffle();
         System.out.println(arr.toString());*/
-
-        System.out.println(arr.myEquals(arr2));
+        
     }
 }

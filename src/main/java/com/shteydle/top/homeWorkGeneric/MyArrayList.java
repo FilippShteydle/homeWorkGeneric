@@ -320,14 +320,16 @@ public class MyArrayList<E> {
         data = newData;
     }
 
+    /**
+     *
+     * @param arr
+     * @return
+     */
     public boolean myEquals(MyArrayList arr) {
-        
-       Object[] arr2 = new MyArrayList[]{arr};
        boolean flag = false;
-
         if (arr.getSize() == getSize()) {
             for (int i = 0; i < size; i++) {
-                if (arr2[i] != data[i]) {
+                if (arr.getElementAt(i) != getElementAt(i)) {
                     flag = false;
                     break;
                 }
@@ -336,6 +338,19 @@ public class MyArrayList<E> {
         } else {
             flag = false;
         }
-return flag;
+        return flag;
     }
+
+    /**
+     *
+     * @param index
+     * @return
+     */
+    public E getElementAt(int index) {
+        if (index >= size) {
+            System.out.println("Выход за пределы массива");
+        }
+        return (E) data[index];
+    }
+
 }
