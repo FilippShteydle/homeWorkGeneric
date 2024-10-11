@@ -1,5 +1,8 @@
 package com.shteydle.top.homeWorkGeneric;
 
+import java.util.Arrays;
+import java.util.Random;
+
 public class MyArrayList<E> {
 
     private Object[] data;
@@ -207,5 +210,132 @@ public class MyArrayList<E> {
             data[i] = null;
         }
         size = 0;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public boolean isEmpty() {
+        if (size == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+    /**
+     *
+     */
+    public void trimToSize() {
+        capacity = size;
+
+        Object[] newData = new Object[capacity];
+        for (int i = 0; i < size; i++) {
+            newData[i] = data[i];
+        }
+        data = newData;
+    }
+
+    /**
+     *
+     * @param e
+     * @return
+     */
+    public int indexOf(E e) {
+        int index = -1;
+        for (int i = 0; i < size; i++) {
+            if (data[i] == e) {
+                index = i;
+            }
+        }
+        return index;
+    }
+
+    /**
+     *
+     * @param e
+     * @return
+     */
+    public int lastIndexOf(E e) {
+        int index = -1;
+        for (int i = size - 1; i > 0; i--) {
+            if (data[i] == e) {
+                index = i;
+                break;
+            }
+        }
+        return index;
+    }
+
+    /**
+     *
+     */
+    public void reverse() {
+        Object[] newData = new Object[capacity];
+        for (int i = 0; i < size; i++) {
+            newData[i] = data[size - 1 - i];
+        }
+        data = newData;
+    }
+
+    private int[] getRand() {
+        Random random = new Random();
+        boolean flag = false;
+        int[] arrRandom = new int[size];
+        int randomNum = 0;
+        for (int i = 0; i < size; i++) {
+            while (!flag) {
+                randomNum = random.nextInt(1, size + 1);
+                for (int j = 0; j <= i; j++) {
+                    if (randomNum != arrRandom[j]) {
+                        flag = true;
+                    } else {
+                        flag = false;
+                        break;
+                    }
+                }
+            }
+            arrRandom[i] = randomNum;
+            flag = false;
+        }
+        for (int i = 0; i < size; i++) {
+            if (arrRandom[i] == size) {
+                arrRandom[i] = 0;
+            }
+        }
+       return arrRandom;
+    }
+
+    /**
+     *
+     */
+    public void shuffle() {
+        Object[] newData = new Object[capacity];
+        int[] arr =getRand();
+        for (int i = 0; i < size; i++) {
+            newData[i] = data[arr[i]];
+        }
+        data = newData;
+    }
+
+    public boolean myEquals(MyArrayList arr) {
+        
+       Object[] arr2 = new MyArrayList[]{arr};
+       boolean flag = false;
+
+        if (arr.getSize() == getSize()) {
+            for (int i = 0; i < size; i++) {
+                if (arr2[i] != data[i]) {
+                    flag = false;
+                    break;
+                }
+                flag = true;
+            }
+        } else {
+            flag = false;
+        }
+return flag;
     }
 }
