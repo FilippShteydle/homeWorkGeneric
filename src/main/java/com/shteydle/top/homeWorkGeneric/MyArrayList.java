@@ -3,7 +3,7 @@ package com.shteydle.top.homeWorkGeneric;
 import java.util.Arrays;
 import java.util.Random;
 
-public class MyArrayList<E> {
+public class MyArrayList<E> implements Cloneable {
 
     private Object[] data;
     private int size;
@@ -73,17 +73,6 @@ public class MyArrayList<E> {
     }
 
     /**
-     * Метод возвращает элемент массива под заданным индексом;
-     * @param position - индекс элемента массива;
-     * @return - элемент массива в виде Object;
-     */
-    public Object getElement(int position) {
-
-        Object a = data[position];
-        return a;
-    }
-
-    /**
      * Метод удаляет первый элемент массива;
      */
 
@@ -98,7 +87,7 @@ public class MyArrayList<E> {
 
     /**
      * Метод добавляет элемент в начало массива;
-     * @param e - данные дюбого типа;
+     * @param e - данные любого типа;
      */
 
     public void pushFront(E e) {
@@ -213,8 +202,8 @@ public class MyArrayList<E> {
     }
 
     /**
-     *
-     * @return
+     * Метод проверят есть ли в массиве элементы;
+     * @return возвращает true если size = 0, и false  в обратном случае
      */
     public boolean isEmpty() {
         if (size == 0) {
@@ -226,7 +215,7 @@ public class MyArrayList<E> {
 
 
     /**
-     *
+     * Метод подгоняет значение capacity под size;
      */
     public void trimToSize() {
         capacity = size;
@@ -239,24 +228,25 @@ public class MyArrayList<E> {
     }
 
     /**
-     *
-     * @param e
-     * @return
+     * Линейный поиск слева направо первого вхождения в массив указанного значения;
+     * @param e - элемент, который необходимо найти;
+     * @return возвращает индекс найденного элемента, если ничего не найдено возвращает -1;
      */
     public int indexOf(E e) {
         int index = -1;
         for (int i = 0; i < size; i++) {
             if (data[i] == e) {
                 index = i;
+                break;
             }
         }
         return index;
     }
 
     /**
-     *
-     * @param e
-     * @return
+     * Линейный поиск справа налево вхождения в массив указанного значения;
+     * @param e - элемент, который необходимо найти;
+     * @return возвращает индекс найденного элемента, если ничего не найдено возвращает -1;
      */
     public int lastIndexOf(E e) {
         int index = -1;
@@ -270,7 +260,7 @@ public class MyArrayList<E> {
     }
 
     /**
-     *
+     * Изменение порядка следования элементов в массиве на противоположный;
      */
     public void reverse() {
         Object[] newData = new Object[capacity];
@@ -309,7 +299,7 @@ public class MyArrayList<E> {
     }
 
     /**
-     *
+     * Случайное перемешивание элементов массива;
      */
     public void shuffle() {
         Object[] newData = new Object[capacity];
@@ -321,9 +311,9 @@ public class MyArrayList<E> {
     }
 
     /**
-     *
-     * @param arr
-     * @return
+     * Метод сравнивает массивы не только по количеству элементов, но и по их содержимому;
+     * @param arr - массив, с которым необходимо сравнить;
+     * @return - возвращает true если массивы идентичны и false в обратном случае;
      */
     public boolean myEquals(MyArrayList arr) {
        boolean flag = false;
@@ -342,9 +332,9 @@ public class MyArrayList<E> {
     }
 
     /**
-     *
-     * @param index
-     * @return
+     * Метод ищет элемент по указанному индексу;
+     * @param index - индекс по которому необходимо вернуть элемент;
+     * @return - возвращает элемент по заданному индексу
      */
     public E getElementAt(int index) {
         if (index >= size) {
@@ -353,4 +343,13 @@ public class MyArrayList<E> {
         return (E) data[index];
     }
 
+    /**
+     * Метод создает точную копию MyArrayList;
+     * @return ссылку на копию объекта;
+     * @throws CloneNotSupportedException - если класс объекта не реализует интерфейс Cloneable;
+     */
+    @Override
+    protected MyArrayList<E> clone() throws CloneNotSupportedException {
+        return (MyArrayList<E>) super.clone();
+    }
 }
