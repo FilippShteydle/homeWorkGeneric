@@ -25,7 +25,7 @@ public class MyArrayListTest {
         arr.pushBack(1);
         arr.pushBack(0);
 
-        String s = "2 1 0 ";
+        String s = "2 1 0";
 
         assertEquals(s, arr.toString());
     }
@@ -121,7 +121,7 @@ public class MyArrayListTest {
         int c = (int) arr.getElementAt(1);
         int d = (int) arr.getElementAt(2);
 
-        String s = "2 0 3 ";
+        String s = "2 0 3";
 
         assertEquals(0, c);
         assertEquals(3, d);
@@ -206,7 +206,7 @@ public class MyArrayListTest {
 
         arr.reverse();
 
-        String s = "3 1 0 1 2 ";
+        String s = "3 1 0 1 2";
 
         assertEquals(s, arr.toString());
     }
@@ -220,7 +220,7 @@ public class MyArrayListTest {
         arr.pushBack(3);
 
         arr.shuffle();
-        String s = "2 1 0 1 3 ";
+        String s = "2 1 0 1 3";
 
         assertNotEquals(s, arr.toString());
     }

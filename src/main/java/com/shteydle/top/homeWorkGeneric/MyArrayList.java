@@ -39,10 +39,10 @@ public class MyArrayList<E> implements Cloneable {
     public String toString() {
 
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < capacity; i++) {
-            if (data[i] == null) {
-                //sb.append(null + " ");
-                continue;
+        for (int i = 0; i < size; i++) {
+            if (i == size - 1) {
+                sb.append(data[i]);
+                break;
             }
             sb.append(data[i] + " ");
         }
